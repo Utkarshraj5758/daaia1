@@ -18,24 +18,25 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[100];
-        int i, n;
-        long start, end;
+        int[] a = new int[10000];
+        Random rand = new Random();
 
-        Scanner s1 = new Scanner(System.in);
-        System.out.println("Enter the number of elements:");
-        n = s1.nextInt();
-
-        System.out.println("Enter sorted elements:");
-        for (i = 0; i < n; i++) {
-            a[i] = s1.nextInt();
+        // Generating random numbers from 1 to 10000
+        for (int i = 0; i < a.length; i++) {
+            a[i] = rand.nextInt(10000) + 1; // Generates numbers between 1 and 10000
         }
 
-        System.out.println("Enter the key element:");
+        // Sorting the array (Binary Search needs sorted input)
+        Arrays.sort(a);
+
+        // Taking key input from user
+        Scanner s1 = new Scanner(System.in);
+        System.out.println("Enter the key element to search:");
         int key = s1.nextInt();
 
+        // Measuring execution time
         long startTime = System.currentTimeMillis();
-        int x = binary(a, 0, n - 1, key);
+        int x = binary(a, 0, a.length - 1, key);
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
 
